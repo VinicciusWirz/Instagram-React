@@ -19,7 +19,7 @@ export default function Usuario(props) {
   function UserImageRender(props) {
     return (
       <>
-        <img onClick={changeImg} src={props.pictureSrc} alt="imagem de perfil" />
+        <img onClick={changeImg} src={props.pictureSrc} alt="imagem de perfil" data-test="profile-image"/>
       </>
     )
   }
@@ -27,7 +27,7 @@ export default function Usuario(props) {
   function UserNameRender(props) {
     return (
       <>
-        <strong>{props.name}</strong>
+        <strong data-test="name">{props.name}</strong>
       </>
     )
   }
@@ -38,7 +38,7 @@ export default function Usuario(props) {
       <div className="texto">
         <span>
           <UserNameRender name={userName} />
-          <ion-icon name="pencil" onClick={changeName}></ion-icon>
+          <ion-icon name="pencil" onClick={changeName} data-test="edit-name"></ion-icon>
         </span>
       </div>
     </div>

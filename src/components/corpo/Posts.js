@@ -17,7 +17,7 @@ function Post(props) {
     const [likePost, setLikePost] = useState("heart-outline");
     const [likePostColor, setLikePostColor] = useState("black");
     const [likes, setLikes] = useState(props.likes);
-    const [likesAnimation, setLikesAnimation] = useState('hide');
+    const [likesAnimation, setLikesAnimation] = useState('hide'); 
 
     function bookmarkPost() {
         if (savePost === "bookmark-outline") {
@@ -27,7 +27,7 @@ function Post(props) {
         }
     }
 
-    function likeContent(identifier) {
+    function likeContent(identifier) { 
         if (likePostColor !== "liked") {
             setLikePost("heart");
             setLikePostColor("liked");
@@ -53,13 +53,13 @@ function Post(props) {
                 <div className={likesAnimation} >
                     <ion-icon name="heart" />
                 </div>
-                <img src={props.postContent} alt={props.postContentAlt} onDoubleClick={likeContent} />
+                <img src={props.postContent} alt={props.postContentAlt} onDoubleClick={likeContent} data-test="post-image"/>
             </div>
         )
     }
 
     return (
-        <div className="post">
+        <div className="post" data-test="post">
             <PostTopo usuario={props.user} />
 
             <Content postContent={props.postContent} postContentAlt={props.postContentAlt} />
@@ -68,13 +68,13 @@ function Post(props) {
                 <div className="acoes">
                     <div>
                         <div className={likePostColor}>
-                            <ion-icon name={likePost} onClick={() => likeContent('btn')}></ion-icon>
+                            <ion-icon name={likePost} onClick={() => likeContent('btn')} data-test="like-post"></ion-icon>
                         </div>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
                     <div>
-                        <ion-icon name={savePost} onClick={bookmarkPost}></ion-icon>
+                        <ion-icon name={savePost} onClick={bookmarkPost} data-test="save-post"></ion-icon>
                     </div>
                 </div>
 
@@ -106,7 +106,7 @@ function PostLike(props) {
         <div className="curtidas">
             <img src={"./assets/img/" + props.likeHighlight + ".svg"} alt={props.likeHighlight} />
             <div className="texto">
-                Curtido por <strong>{props.likeHighlight}</strong> e <strong>outras {props.likes} pessoas</strong>
+                Curtido por <strong>{props.likeHighlight}</strong> e <strong>outras <b data-test="likes-number">{props.likes}</b> pessoas</strong>
             </div>
         </div>
     )
