@@ -1,0 +1,30 @@
+.post>.fundo>.acoes>div:first-child{
+    display: inherit;
+}
+.post>.fundo>.acoes>div>.liked{
+    color:red;
+  }
+
+  .hide{
+    display: none;
+  }
+
+  .overlay{
+    color: white;
+    position: absolute;
+    font-size: 150px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all 0.3s;
+    animation: growing 0.3s ease;
+  }
+
+  @keyframes growing{
+    0%{
+      transform: translate(-50%,-50%) scale(0.2);
+    }
+    100%{
+      transform: translate(-50%,-50%) scale(1);
+    }
+  }

@@ -1,9 +1,10 @@
 import Usuario from "./Usuario"
 import Sugestoes from "./Sugestoes"
 export default function Sidebar() {
+  let userInfo = {userName: 'catanacomics', userPic: './assets/img/catanacomics.svg'}
   return (
     <div className="sidebar">
-      <Usuario />
+      <Usuario userName={userInfo.userName} userPic={userInfo.userPic}/>
       <Sugestoes />
       <div className="links">
         Sobre • Ajuda • Imprensa • API • Carreiras • Privacidade • Termos • Localizações • Contas mais relevantes •

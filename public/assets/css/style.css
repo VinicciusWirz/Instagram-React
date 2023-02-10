@@ -172,11 +172,24 @@ body {
   margin-right: 10px;
 }
 
-.post .usuario, .post .topo img, .post .fundo img, .post ion-icon, .post strong, .usuario ion-icon, .usuario > img, .conteudo > img {
+.post .usuario,
+.post .topo img,
+.post .fundo img,
+.post ion-icon,
+.post strong,
+.usuario ion-icon,
+.usuario > img,
+.conteudo > img,
+.conteudo > video {
   cursor: pointer;
 }
 
-.post .conteudo img {
+.conteudo{
+  position: relative;
+}
+
+.post .conteudo img,
+.conteudo video {
   width: 100%;
 }
 

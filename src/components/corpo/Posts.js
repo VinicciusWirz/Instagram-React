@@ -2,18 +2,22 @@ import { useState } from "react"
 
 export default function Posts() {
     const postInfo = [
-        { id: 1, op: "meowed", postContent: "gato-telefone", postType: "img", likeHighlight: "respondeai", likes: "101.523" },
-        { id: 2, op: "barked", postContent: "dog", postType: "img", likeHighlight: "adorable_animals", likes: "99.159" },
-        { id: 3, op: "wawawicomics", postContent: "video", postType: "video", likeHighlight: "chibirdart", likes: "55.521" },
+        { id: 1, op: "meowed", postContent: "./assets/img/gato-telefone.svg", postContentAlt: "gato-telefone", likeHighlight: "respondeai", likes: "101.523" },
+        { id: 2, op: "barked", postContent: "./assets/img/dog.svg", postContentAlt: "dog", likeHighlight: "adorable_animals", likes: "99.159" },
+        { id: 3, op: "wawawicomics", postContent: "./assets/img/scooby.jpg", postContentAlt: "scooby", likeHighlight: "chibirdart", likes: "55.521" },
     ]
     return (
         <div className="posts">
-            {postInfo.map((post) => <Post key={post.id} postType={post.postType} user={post.op} postContent={post.postContent} likeHighlight={post.likeHighlight} likes={post.likes} />)}
+            {postInfo.map((post) => <Post key={post.id} postContentAlt={post.postContentAlt} user={post.op} postContent={post.postContent} likeHighlight={post.likeHighlight} likes={post.likes} />)}
         </div>
     )
 }
 function Post(props) {
     const [savePost, setSavePost] = useState("bookmark-outline");
+    const [likePost, setLikePost] = useState("heart-outline");
+    const [likePostColor, setLikePostColor] = useState("black");
+    const [likes, setLikes] = useState(props.likes);
+    const [likesAnimation, setLikesAnimation] = useState('hide');
 
     function bookmarkPost() {
         if (savePost === "bookmark-outline") {
@@ -23,16 +27,49 @@ function Post(props) {
         }
     }
 
+    function likeContent(identifier) {
+        if (likePostColor !== "liked") {
+            setLikePost("heart");
+            setLikePostColor("liked");
+            setLikes(((Number(likes) * 1000 + 1) / 1000).toFixed(3))
+        }
+        if (likePostColor === "liked" && identifier === "btn") {
+            setLikePost("heart-outline");
+            setLikePostColor("black");
+            setLikes(((Number(likes) * 1000 - 1) / 1000).toFixed(3))
+        }
+        if (likePostColor !== "liked" && identifier !== "btn") {
+            setLikesAnimation("overlay")
+            setTimeout(() => {
+                setLikesAnimation("hide")
+            }, 500);
+        }
+
+    }
+
+    function Content(props) {
+        return (
+            <div className="conteudo">
+                <div className={likesAnimation} >
+                    <ion-icon name="heart" />
+                </div>
+                <img src={props.postContent} alt={props.postContentAlt} onDoubleClick={likeContent} />
+            </div>
+        )
+    }
+
     return (
         <div className="post">
             <PostTopo usuario={props.user} />
 
-            <Content postContent={props.postContent} postType={props.postType} />
+            <Content postContent={props.postContent} postContentAlt={props.postContentAlt} />
 
             <div className="fundo">
                 <div className="acoes">
                     <div>
-                        <ion-icon name="heart-outline"></ion-icon>
+                        <div className={likePostColor}>
+                            <ion-icon name={likePost} onClick={() => likeContent('btn')}></ion-icon>
+                        </div>
                         <ion-icon name="chatbubble-outline"></ion-icon>
                         <ion-icon name="paper-plane-outline"></ion-icon>
                     </div>
@@ -41,30 +78,11 @@ function Post(props) {
                     </div>
                 </div>
 
-                <PostLike likeHighlight={props.likeHighlight} likes={props.likes} />
+                <PostLike likeHighlight={props.likeHighlight} likes={likes} />
 
             </div>
         </div>
     )
-}
-
-function Content(props) {
-    if (props.postType === "img") {
-        return (
-            <div className="conteudo">
-                <img src={"./assets/img/" + props.postContent + ".svg"} alt={props.postContent} />
-            </div>
-        )
-    }
-    if (props.postType === "video") {
-        return (
-            <video autoPlay="autoplay" loop="" muted>
-                <source src={"./assets/img/" + props.postContent + ".mp4"} />
-                <source src={"./assets/img/" + props.postContent + ".ogg"} />
-                Seu navegador não suporta vídeos
-            </video>
-        )
-    }
 }
 
 function PostTopo(props) {
@@ -80,6 +98,8 @@ function PostTopo(props) {
         </div>
     )
 }
+
+
 
 function PostLike(props) {
     return (

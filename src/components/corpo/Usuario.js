@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-export default function Usuario() {
-  const [userName, setUserName] = useState('catanacomics')
-  const [userImg, setUserImg] = useState('./assets/img/catanacomics.svg')
+export default function Usuario(props) {
+  const [userName, setUserName] = useState(props.userName)
+  const [userImg, setUserImg] = useState(props.userPic)
 
   function changeName() {
     let newName = prompt('Digite um novo nome de exibição.');
@@ -10,18 +10,34 @@ export default function Usuario() {
     setUserName(nameVerify);
   }
 
-  function changeImg(){
+  function changeImg() {
     let newImg = prompt('Insira um novo link de imagem para exibição.');
     let imgVerify = newImg ? newImg : userImg
     setUserImg(imgVerify);
   }
 
+  function UserImageRender(props) {
+    return (
+      <>
+        <img onClick={changeImg} src={props.pictureSrc} alt="imagem de perfil" />
+      </>
+    )
+  }
+
+  function UserNameRender(props) {
+    return (
+      <>
+        <strong>{props.name}</strong>
+      </>
+    )
+  }
+
   return (
     <div className="usuario">
-      <img onClick={changeImg} src={userImg} alt="imagem de perfil" />
+      <UserImageRender pictureSrc={userImg} />
       <div className="texto">
         <span>
-          <strong>{userName}</strong>
+          <UserNameRender name={userName} />
           <ion-icon name="pencil" onClick={changeName}></ion-icon>
         </span>
       </div>
