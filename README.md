@@ -2,15 +2,16 @@
 
 This project is a introduction-project to react.
 
-**Steps**
-## Apply the layout from older projects or the one provided from the bootcamp using create-react-app
+# Steps
 
-## Componentize elements using react
+Apply the layout from older projects or the one provided from the bootcamp using create-react-app
 
-## Dynamic interactions (change user name, user image, like posts, save posts)
+Componentize elements using react
 
-**Extra**
+Dynamic interactions (change user name, user image, like posts, save posts)
 
-## Doubleclick post to like
+# Extra
 
-## Like animation
+Doubleclick post to like
+
+Like animation
