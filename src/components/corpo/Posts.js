@@ -64,6 +64,12 @@ function Post(props) {
     }
 
     function likeContent(identifier) {
+        if (likePostColor !== "liked" && identifier !== "btn") {
+            setLikesAnimation("conteudo overlay");
+            setTimeout(() => {
+                setLikesAnimation("conteudo hide");
+            }, 500);
+        }
         if (likePostColor !== "liked") {
             setLikePost("heart");
             setLikePostColor("liked");
@@ -73,12 +79,6 @@ function Post(props) {
             setLikePost("heart-outline");
             setLikePostColor("black");
             setLikes(((Number(likes) * 1000 - 1) / 1000).toFixed(3));
-        }
-        if (likePostColor !== "liked" && identifier !== "btn") {
-            setLikesAnimation("conteudo overlay");
-            setTimeout(() => {
-                setLikesAnimation("conteudo hide");
-            }, 500);
         }
     }
 
