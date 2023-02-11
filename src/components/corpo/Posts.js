@@ -64,7 +64,7 @@ function Post(props) {
     }
 
     function likeContent(identifier) {
-        if (likePostColor !== "liked" && identifier !== "btn") {
+        if (identifier !== "btn") {
             setLikesAnimation("conteudo overlay");
             setTimeout(() => {
                 setLikesAnimation("conteudo hide");
