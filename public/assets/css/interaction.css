@@ -1,30 +1,38 @@
-.post>.fundo>.acoes>div:first-child{
-    display: inherit;
+.post>.fundo>.acoes>div:first-child {
+  display: inherit;
 }
-.post>.fundo>.acoes>div>.liked{
-    color:red;
+
+.post>.fundo>.acoes>div>.liked {
+  color: red;
+}
+
+.hide {
+  display: none;
+  z-index: -1;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  color: white;
+  position: absolute;
+  font-size: 150px;
+}
+
+.overlay>ion-icon {
+  animation: growing 0.3s ease;
+}
+
+@keyframes growing {
+  0% {
+    transform: scale(0.2);
   }
 
-  .hide{
-    display: none;
+  100% {
+    transform: scale(1);
   }
-
-  .overlay{
-    color: white;
-    position: absolute;
-    font-size: 150px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    transition: all 0.3s;
-    animation: growing 0.3s ease;
-  }
-
-  @keyframes growing{
-    0%{
-      transform: translate(-50%,-50%) scale(0.2);
-    }
-    100%{
-      transform: translate(-50%,-50%) scale(1);
-    }
-  }
+}
