@@ -1,7 +1,7 @@
-import Usuario from "./Usuario"
-import Sugestoes from "./Sugestoes"
+import Usuario from "./Usuario";
+import Sugestoes from "./Sugestoes";
 export default function Sidebar() {
-  let userInfo = {userName: 'catanacomics', userPic: './assets/img/catanacomics.svg'}
+  const userInfo = {userName: 'catanacomics', userPic: './assets/img/catanacomics.svg'}
   return (
     <div className="sidebar">
       <Usuario userName={userInfo.userName} userPic={userInfo.userPic}/>
@@ -14,5 +14,5 @@ export default function Sidebar() {
         © 2021 INSTAGRAM DO FACEBOOK
       </div>
     </div>
-  )
+  );
 }

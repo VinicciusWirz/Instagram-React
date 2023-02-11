@@ -1,27 +1,27 @@
 import { useState } from "react";
 
 export default function Usuario(props) {
-  const [userName, setUserName] = useState(props.userName)
-  const [userImg, setUserImg] = useState(props.userPic)
+  const [userName, setUserName] = useState(props.userName);
+  const [userImg, setUserImg] = useState(props.userPic);
 
   function changeName() {
     let newName = prompt('Digite um novo nome de exibição.');
-    let nameVerify = newName ? newName : userName
+    let nameVerify = newName ? newName : userName;
     setUserName(nameVerify);
   }
 
   function changeImg() {
     let newImg = prompt('Insira um novo link de imagem para exibição.');
-    let imgVerify = newImg ? newImg : userImg
+    let imgVerify = newImg ? newImg : userImg;
     setUserImg(imgVerify);
   }
 
   function UserImageRender(props) {
     return (
       <>
-        <img onClick={changeImg} src={props.pictureSrc} alt="imagem de perfil" data-test="profile-image"/>
+        <img onClick={changeImg} src={props.pictureSrc} alt="imagem de perfil" data-test="profile-image" />
       </>
-    )
+    );
   }
 
   function UserNameRender(props) {
@@ -29,7 +29,7 @@ export default function Usuario(props) {
       <>
         <strong data-test="name">{props.name}</strong>
       </>
-    )
+    );
   }
 
   return (
@@ -42,5 +42,5 @@ export default function Usuario(props) {
         </span>
       </div>
     </div>
-  )
+  );
 }

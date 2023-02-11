@@ -9,7 +9,7 @@ export default function Stories() {
     { id: 7, op: "filomoderna", opImg: "./assets/img/filomoderna.svg" },
     { id: 8, op: "memeriagourmet", opImg: "./assets/img/memeriagourmet.svg" },
     { id: 9, op: "memeriagourmet", opImg: "./assets/img/memeriagourmet.svg" }
-  ]
+  ];
   return (
     <div className="stories">
       {storiesInfo.map((story) => <Story key={story.id} op={story.op} opImg={story.opImg} />)}
@@ -17,7 +17,7 @@ export default function Stories() {
         <ion-icon name="chevron-forward-circle"></ion-icon>
       </div>
     </div>
-  )
+  );
 }
 
 function Story(props) {
@@ -30,5 +30,5 @@ function Story(props) {
         {props.op}
       </div>
     </div>
-  )
+  );
 }

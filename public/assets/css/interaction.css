@@ -27,11 +27,11 @@
 
 
 @keyframes growing {
-  0% {
+  from {
     transform: scale(0.2);
   }
 
-  100% {
+  to {
     transform: scale(1);
   }
 }

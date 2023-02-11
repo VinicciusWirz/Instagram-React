@@ -5,7 +5,7 @@ export default function Sugestoes() {
     { id: 3, op: "razoesparaacreditar", opImg: "./assets/img/razoesparaacreditar.svg", reason: "Novo no Instagram" },
     { id: 4, op: "adorable_animals", opImg: "./assets/img/adorable_animals.svg", reason: "Segue você" },
     { id: 5, op: "smallcutecats", opImg: "./assets/img/smallcutecats.svg", reason: "Segue você" }
-  ]
+  ];
   return (
     <div className="sugestoes">
       <div className="titulo">
@@ -14,7 +14,7 @@ export default function Sugestoes() {
       </div>
       {sugestionData.map((s) => <Sugestao key={s.id} user={s.op} userImg={s.opImg} followReason={s.reason} />)}
     </div>
-  )
+  );
 }
 
 function Sugestao(props) {
@@ -30,5 +30,5 @@ function Sugestao(props) {
 
       <div className="seguir">Seguir</div>
     </div>
-  )
+  );
 }
