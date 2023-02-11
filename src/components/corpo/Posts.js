@@ -53,7 +53,7 @@ function Post(props) {
     const [likePost, setLikePost] = useState("heart-outline");
     const [likePostColor, setLikePostColor] = useState("black");
     const [likes, setLikes] = useState(props.likes);
-    const [likesAnimation, setLikesAnimation] = useState('hide');
+    const [likesAnimation, setLikesAnimation] = useState('conteudo hide');
 
     function bookmarkPost() {
         if (savePost === "bookmark-outline") {
@@ -75,19 +75,17 @@ function Post(props) {
             setLikes(((Number(likes) * 1000 - 1) / 1000).toFixed(3));
         }
         if (likePostColor !== "liked" && identifier !== "btn") {
-            setLikesAnimation("overlay");
+            setLikesAnimation("conteudo overlay");
             setTimeout(() => {
-                setLikesAnimation("hide");
+                setLikesAnimation("conteudo hide");
             }, 500);
         }
     }
 
     function Content(props) {
         return (
-            <div className="conteudo" onDoubleClick={likeContent} data-test="post-image">
-                <div className={likesAnimation} >
-                    <ion-icon name="heart" />
-                </div>
+            <div className={likesAnimation} onDoubleClick={likeContent} data-test="post-image">
+                <ion-icon name="heart" />
                 <img src={props.postContent} alt={props.postContentAlt} />
             </div>
         );
