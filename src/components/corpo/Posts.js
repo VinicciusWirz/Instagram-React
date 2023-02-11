@@ -49,11 +49,11 @@ function Post(props) {
 
     function Content(props) {
         return (
-            <div className="conteudo">
+            <div className="conteudo" onDoubleClick={likeContent} data-test="post-image">
                 <div className={likesAnimation} >
                     <ion-icon name="heart" />
                 </div>
-                <img src={props.postContent} alt={props.postContentAlt} onDoubleClick={likeContent} data-test="post-image"/>
+                <img src={props.postContent} alt={props.postContentAlt}/>
             </div>
         )
     }
