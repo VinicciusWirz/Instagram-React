@@ -21,7 +21,7 @@
   z-index: 1;
   color: white;
   position: absolute;
-  font-size: 150px;
+  font-size: 250px;
   animation: growing 0.3s ease;
 }
 
