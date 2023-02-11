@@ -65,10 +65,10 @@ function Post(props) {
 
     function likeContent(identifier) {
         if (identifier !== "btn") {
-            setLikesAnimation("conteudo overlay");
             setTimeout(() => {
                 setLikesAnimation("conteudo hide");
             }, 500);
+            setLikesAnimation("conteudo overlay");
         }
         if (likePostColor !== "liked") {
             setLikePost("heart");
@@ -84,9 +84,9 @@ function Post(props) {
 
     function Content(props) {
         return (
-            <div className={likesAnimation} >
+            <div className={likesAnimation} onDoubleClick={likeContent} data-test="post-image">
                 <ion-icon name="heart" />
-                <img src={props.postContent} alt={props.postContentAlt} onDoubleClick={likeContent} data-test="post-image"/>
+                <img src={props.postContent} alt={props.postContentAlt}/>
             </div>
         );
     }
