@@ -84,9 +84,9 @@ function Post(props) {
 
     function Content(props) {
         return (
-            <div className={likesAnimation} onDoubleClick={likeContent} data-test="post-image">
+            <div className={likesAnimation}>
                 <ion-icon name="heart" />
-                <img src={props.postContent} alt={props.postContentAlt}/>
+                <img src={props.postContent} alt={props.postContentAlt} onDoubleClick={likeContent} data-test="post-image"/>
             </div>
         );
     }
